@@ -27,8 +27,10 @@
 //   loop function playRound 5 times
 //   if 
 //     playerCounter > computerCounter player win
-//     else if playerCounter = computerCounter draw
-//     else computer win
+//       else if 
+//     playerCounter = computerCounter draw
+//       else 
+//     computer win
 //   reset counter
 
 let roundCounter = 0;
@@ -54,3 +56,48 @@ const getComputerSelection = (choice) => {
       return choice;
   }
 };
+
+function playRound() {
+  const playerSelection = getPlayerSelection();
+  const computerSelection = getComputerSelection();
+
+  ++roundCounter;
+  console.log(`Round count ${roundCounter}`);
+
+  // draw
+  if (playerSelection === computerSelection) {
+    alert(
+      `It a draw you choose "${playerSelection}" computer choose "${computerSelection}"`
+    );
+    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Player win count ${playerCounter}`);
+    // player win
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") ||
+    (playerSelection === "scissors" && computerSelection === "paper")
+  ) {
+    ++playerCounter;
+    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Player win count ${playerCounter}`);
+    alert(
+      `You WIN!!! you choose "${playerSelection}" computer choose "${computerSelection}"`
+    );
+    // computer win
+  } else if (
+    (playerSelection === "rock" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "rock")
+  ) {
+    ++computerCounter;
+    console.log(`Computer win count ${computerCounter}`)
+    console.log(`player win count ${playerCounter}`);
+    alert(
+      `You Lose :< you choose "${playerSelection}" computer choose "${computerSelection}"`
+    );
+  } else {
+    console.log(`Computer win count ${computerCounter}`)
+    console.log(`player win count ${playerCounter}`);
+    alert(`I think you type "${playerSelection}", soooo you lost XD`);
+  }
+}
