@@ -25,11 +25,11 @@
 
 // make function to playRound 5 times
 //   loop function playRound 5 times
-//   if 
+//   if
 //     playerCounter > computerCounter player win
-//       else if 
+//       else if
 //     playerCounter = computerCounter draw
-//       else 
+//       else
 //     computer win
 //   reset counter
 
@@ -69,7 +69,7 @@ function playRound() {
     alert(
       `It a draw you choose "${playerSelection}" computer choose "${computerSelection}"`
     );
-    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Computer win count ${computerCounter}`);
     console.log(`Player win count ${playerCounter}`);
     // player win
   } else if (
@@ -78,7 +78,7 @@ function playRound() {
     (playerSelection === "scissors" && computerSelection === "paper")
   ) {
     ++playerCounter;
-    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Computer win count ${computerCounter}`);
     console.log(`Player win count ${playerCounter}`);
     alert(
       `You WIN!!! you choose "${playerSelection}" computer choose "${computerSelection}"`
@@ -90,14 +90,30 @@ function playRound() {
     (playerSelection === "scissors" && computerSelection === "rock")
   ) {
     ++computerCounter;
-    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Computer win count ${computerCounter}`);
     console.log(`player win count ${playerCounter}`);
     alert(
       `You Lose :< you choose "${playerSelection}" computer choose "${computerSelection}"`
     );
   } else {
-    console.log(`Computer win count ${computerCounter}`)
+    console.log(`Computer win count ${computerCounter}`);
     console.log(`player win count ${playerCounter}`);
     alert(`I think you type "${playerSelection}", soooo you lost XD`);
   }
 }
+
+const game = () => {
+  for (i = 0; i < 5; i++) {
+    playRound();
+  }
+  if (playerCounter > computerCounter) {
+    alert(`YOU WINNNNNNNN with score ${playerCounter} - ${computerCounter}`);
+  } else if (playerCounter === computerCounter) {
+    alert(`It's a DRAW with score ${playerCounter} - ${computerCounter}`);
+  } else {
+    alert(`You Lose :< with score ${playerCounter} - ${computerCounter}`);
+  }
+  playerCounter = 0;
+  computerCounter = 0;
+  roundCounter = 0;
+};
